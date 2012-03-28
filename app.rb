@@ -67,7 +67,7 @@ post "/send/:nickname" do
   erb :sent
 end
 
-get "/picture/:id" do
+get "/pictures/:id" do
   @picture = Picture.first(id: params[:id])
   erb :picture
 end
