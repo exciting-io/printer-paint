@@ -1,0 +1,31 @@
+<form action="" method="post">
+  <label for="picture_from">From: 
+    <input type="text" name="picture[from]" />
+  </label>
+  <br/>
+  <label for="picture_image_data">Picture:
+        <div id="container">
+          <canvas id="imageView" width="384" height="384">
+            <p>Unfortunately, your browser is currently unsupported by our web 
+            application.  We are sorry for the inconvenience. Please use one of the 
+            supported browsers listed below, or draw the image you want using an 
+            offline tool.</p>
+            <p>Supported browsers: <a href="http://www.opera.com">Opera</a>, <a 
+              href="http://www.mozilla.com">Firefox</a>, <a 
+              href="http://www.apple.com/safari">Safari</a>, and <a 
+              href="http://www.konqueror.org">Konqueror</a>.</p>
+          </canvas>
+        </div>
+    <input type="hidden" id="picture_image_data" name="picture[image_data]" />
+  </label>
+  <input id="sendPicture" type="submit" value="Send" />
+</form>
+
+<script src="/paint.js" type="text/javascript" charset="utf-8"></script>
+<script>
+$(function() {
+  $("#sendPicture").click(function() {
+    $("#picture_image_data").val($("#imageView")[0].toDataURL());
+  })
+})
+</script>

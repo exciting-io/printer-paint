@@ -1,0 +1,53 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://wee-printer.gofreerange.com/stylesheets/print.css" type="text/css" media="screen" title="no title" charset="utf-8">
+<style>
+input {
+  width: 100%;
+  font-size: 24px;
+}
+
+canvas {
+  box-sizing: border-box;
+  width: 384px;
+  height: 384px;
+  cursor: url(http://cursors0.totallyfreecursors.com/thumbnails/hand-pencil.gif);
+}
+
+#container { position: relative; }
+#imageView { border: 1px solid #000; }
+#imageTemp { position: absolute; top: 1px; left: 1px; }
+
+.picture {
+  font-family: "Arial Rounded Mt", "Arial", sans-serif;
+}
+
+.picture header {
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+  padding: 5px 0;
+  margin-bottom: 20px;
+}
+
+.picture header .label {
+  width: 50px;
+  display: block;
+  float: left;
+}
+
+.picture img {
+  width: 384px;
+  height: 384px;
+}
+</style>
+</head>
+<body class="preview">
+  <div class="paper">
+    <div class="content">
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>
