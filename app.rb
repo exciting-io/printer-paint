@@ -48,7 +48,6 @@ get "/" do
 end
 
 get "/register" do
-  p url("/messages")
   erb :register
 end
 
