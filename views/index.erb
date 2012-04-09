@@ -9,3 +9,11 @@
 <p>If you have a printer, and want to use this instance of Printer Paint to receive pictures you can <a href="/register">register here</a>.</p>
 
 <p>If you don't have a printer, why not <a href="http://printer.gofreerange.com/getting-a-printer">find out how to get or make a printer</a> for yourself?</p>
+
+<h2>How it works</h2>
+
+<p>The paint app is very similar to the <a href="https://github.com/freerange/printer-mail">mail app</a>. Printers are registered by storing their print URL along side a nickname, which forms the URL in this app (e.g. <a href="/send/freerange">/send/freerange</a>).</p>
+
+<p>When a drawing is "sent", the contents of the HTML5 canvas are serialised into a form field and stored in the database, associated with the printer record.</p>
+
+<p>The application then sends a request to the given print URL with the URL for that drawing (e.g. <a href="/pictures/6">/pictures/6</a>). The <a href="https://github.com/freerange/printer">printer backend server</a> then takes care of rasterising the image, and making it available to the right printer.</p>
