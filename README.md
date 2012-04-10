@@ -41,7 +41,7 @@ Why do I have to enter a printer URL?
 
 Well, the idea is that printers don't all need to be connected to a single central backend server. You can run your own Printer backend server for yourself, or for you and your friends. Or you could run your own backend server behind your firewall. Or you can use a hosted one, like the original server at http://printer.gofreerange.com. It's up to you.
 
-Similarly, many difference publishers can be used to send content to a single printer. This demonstration "picture" service isn't tied to any single backend, and you can run your own instance of this publisher yourself too if you like.
+Similarly, many different publishers can be used to send content to a single printer. This demonstration "picture" service isn't tied to any single backend, and you can run your own instance of this publisher yourself too if you like.
 
 [project page]: https://gofreerange.com/printer
 [mail app]: https://github.com/freerange/printer-mail
