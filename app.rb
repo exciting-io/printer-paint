@@ -4,7 +4,7 @@ require "sinatra"
 require "data_mapper"
 require "net/http"
 
-DataMapper::setup(:default, ENV['SHARED_DATABASE_URL'] || "sqlite3://#{Dir.pwd}/printer-paint.db")
+DataMapper::setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/printer-paint.db")
 
 class Printer
   include DataMapper::Resource
