@@ -2,7 +2,7 @@
   <header>
     <div class="from"><span class="label">From:</span> <%= @picture.from %></div>
     <div class="hour"><span class="label">At:</span> <%= @picture.sent_at.strftime("%l:%M%P") %></div>
-    <div class="date"><span class="label">On:</span> <%= @picture.sent_at.strftime("%A %e %B") %></div>
+    <div class="date"><span class="label">On:</span> <%= @picture.sent_at.strftime("%A %e %B, %Y") %></div>
   </header>
   <img src="<%= @picture.image_data %>" />
 </section>
