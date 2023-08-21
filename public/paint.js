@@ -6,6 +6,8 @@ window.addEventListener('load', function () {
 
   // The active tool instance.
   var tool;
+  var strokeColor = "#000000";
+  var strokeWidth = 1;
 
   function init () {
     // Find the canvas element.
@@ -44,6 +46,13 @@ window.addEventListener('load', function () {
 
     tool = new tools.pencil();
 
+
+    document.getElementById('pencil').addEventListener('click', ev_tool_change, false);
+    document.getElementById('eraser').addEventListener('click', ev_tool_change, false);
+    document.getElementById('small').addEventListener('click', ev_width_change, false);
+    document.getElementById('medium').addEventListener('click', ev_width_change, false);
+    document.getElementById('large').addEventListener('click', ev_width_change, false);
+
     // Attach the mousedown, mousemove and mouseup event listeners.
     canvas.addEventListener('mousedown', ev_canvas, false);
     canvas.addEventListener('mousemove', ev_canvas, false);
@@ -70,8 +79,25 @@ window.addEventListener('load', function () {
 
   // The event handler for any changes made to the tool selector.
   function ev_tool_change (ev) {
-    if (tools[this.value]) {
-      tool = new tools[this.value]();
+    const toolname = this.id;
+    if (tools[toolname]) {
+      tool = new tools[toolname]();
+      canvas.style.cursor = tool.cursor;
+    }
+  }
+
+  // The event handler for any changes made to the tool selector.
+  function ev_width_change (ev) {
+    switch (this.id) {
+      case "small":
+        strokeWidth = 1;
+        break;
+      case "medium":
+        strokeWidth = 5;
+        break;
+      case "large":
+        strokeWidth = 10;
+        break;
     }
   }
 
@@ -91,11 +117,15 @@ window.addEventListener('load', function () {
     var tool = this;
     this.started = false;
 
+    this.cursor = "url('/pencil.gif') 3 30, auto";
+
     // This is called when you start holding down the mouse button.
     // This starts the pencil drawing.
     this.mousedown = function (ev) {
         context.beginPath();
         context.moveTo(ev._x, ev._y);
+        context.strokeStyle = "#000000";
+        context.lineWidth = strokeWidth;
         tool.started = true;
     };
 
@@ -118,6 +148,42 @@ window.addEventListener('load', function () {
       }
     };
   };
+
+  tools.eraser = function () {
+    var tool = this;
+    this.started = false;
+
+    this.cursor = "url('/eraser.gif') 6 30, auto";
+
+    // This is called when you start holding down the mouse button.
+    // This starts the pencil drawing.
+    this.mousedown = function (ev) {
+        context.beginPath();
+        context.moveTo(ev._x, ev._y);
+        tool.started = true;
+        context.strokeStyle = "#FFFFFF";
+        context.lineWidth = strokeWidth * 2;
+    };
+
+    // This function is called every time you move the mouse. Obviously, it only
+    // draws if the tool.started state is set to true (when you are holding down
+    // the mouse button).
+    this.mousemove = function (ev) {
+      if (tool.started) {
+        context.lineTo(ev._x, ev._y);
+        context.stroke();
+      }
+    };
+
+    // This is called when you release the mouse button.
+    this.mouseup = function (ev) {
+      if (tool.started) {
+        tool.mousemove(ev);
+        tool.started = false;
+        img_update();
+      }
+    };
+  }
 
   init();
 

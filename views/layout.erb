@@ -12,7 +12,7 @@ canvas {
   box-sizing: border-box;
   width: 384px;
   height: 384px;
-  cursor: url(http://cursors0.totallyfreecursors.com/thumbnails/hand-pencil.gif);
+  cursor: url('/pencil.gif') 3 30, auto;
 }
 
 #container { position: relative; }
@@ -40,6 +40,26 @@ canvas {
 .picture img {
   width: 384px;
   height: 384px;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+#controls ul {
+  list-style: none;
+  padding: 0;
+}
+
+#controls li {
+  display: inline-block;
+ }
+
+#controls a {
+  border: 1px solid #ccc;
+  background-color: #eee;
+  padding: 5px 5px 2px 5px;
 }
 </style>
 </head>
