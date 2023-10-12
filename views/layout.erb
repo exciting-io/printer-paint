@@ -15,13 +15,131 @@ canvas {
   cursor: url('/pencil.gif') 3 30, auto;
 }
 
-#container { position: relative; }
+#artboard { position: relative; }
 #imageView { border: 1px solid #000; }
 #imageTemp { position: absolute; top: 1px; left: 1px; }
 
-.picture {
-  font-family: "Arial Rounded Mt", "Arial", sans-serif;
+.paper {
+	 margin: auto auto var(--margin2x);
 }
+ @media (max-width: 440px) {
+	 .paper {
+		 background-color: transparent;
+	}
+}
+ .paper .content {
+	 margin: auto;
+	 max-width: 384px;
+}
+ .paper .content #controls {
+	 display: flex;
+	 flex-wrap: wrap;
+	 justify-content: space-between;
+	 margin-top: var(--margin1x);
+	 padding: 0.25em 0;
+	 touch-action: manipulation;
+}
+ .paper .content #controls > div {
+	 display: flex;
+	 gap: 0.25em;
+}
+ .paper .content #controls button {
+	 align-items: center;
+	 appearance: none;
+	 background-color: transparent;
+	 border: 1px solid var(--color-txt-half);
+	 border-radius: 0.25em;
+	 color: inherit;
+	 cursor: pointer;
+	 display: flex;
+	 font: inherit;
+	 height: 28px;
+	 justify-content: center;
+	 touch-action: manipulation;
+	 width: 28px;
+}
+ @media (pointer: fine) {
+	 .paper .content #controls button:hover {
+		 border-color: var(--color-txt);
+	}
+	 .paper .content #controls button:active {
+		 transform: translateY(1px);
+	}
+}
+ .paper .content #controls button.selected {
+	 background-color: var(--color-txt);
+	 border-color: var(--color-txt);
+	 color: var(--color-bg);
+}
+ .paper .content #controls i {
+	 display: block;
+	 font-size: inherit;
+	 margin: 0;
+	 touch-action: manipulation;
+}
+ .paper .content .artboard {
+	 position: relative;
+}
+ .paper .content canvas {
+	 aspect-ratio: 1;
+	 background-color: white;
+	 border: 1px solid var(--color-txt-half);
+	 border-radius: 0.25em;
+	 box-sizing: border-box;
+	 cursor: none;
+	 display: block;
+	 max-height: 384px;
+	 max-width: 384px;
+	 touch-action: none;
+	 width: 100%;
+}
+ @media (prefers-color-scheme: dark) {
+	 .paper .content canvas {
+		 border-color: white;
+	}
+}
+ .paper .content .from, .paper .content .link {
+	 margin-block: 0.75em 0.5em;
+}
+ .paper .content .from input[type="text"], .paper .content .link input[type="text"] {
+	 border: 1px solid var(--color-txt-half);
+	 border-radius: 0.25em;
+	 box-sizing: border-box;
+	 font: inherit;
+	 line-height: 1;
+	 padding: 0.5em;
+	 width: 100%;
+}
+ @media (prefers-color-scheme: dark) {
+	 .paper .content .from input[type="text"], .paper .content .link input[type="text"] {
+		 border-color: white;
+	}
+}
+ .paper .content .button {
+	 margin-top: 0.5rem;
+	 width: 100%;
+}
+ #mouseCircle {
+	 background-color: #eee;
+	 border: 1px solid #999;
+	 border-radius: 50%;
+	 box-shadow: 0 0 16px rgba(255, 255, 255, 0);
+	 display: none;
+	 height: 2px;
+	 margin: -1px 0 0 -1px;
+	 opacity: 50%;
+	 pointer-events: none !important;
+	 position: absolute;
+	 width: 2;
+	 z-index: 100;
+}
+ .artboard:hover + #mouseCircle {
+	 display: block;
+ }
+
+ .picture {
+   font-family: "Arial Rounded Mt", "Arial", sans-serif;
+ }
 
 .picture header {
   border-top: 2px solid black;

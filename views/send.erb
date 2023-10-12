@@ -5,36 +5,35 @@
   <br/>
   <label for="picture_image_data">Picture:
     <div id="controls">
-      <ul id="tools">
-        <li>
-          <a id="pencil"><img src="/pencil.gif" width="16px"/></a>
-        </li>
-        <li>
-          <a id="eraser"><img src="/eraser.gif" width="16px"/></a>
-        </li>
-      </ul>
-      <ul id="widths">
-        <li>
-          <a id="small">
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px">
-              <circle cx="8" cy="8" r="2" stroke="black" stroke-width="1" fill="black" />
-          </a>
-        </li>
-        <li>
-          <a id="medium">
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px">
-              <circle cx="8" cy="8" r="4" stroke="black" stroke-width="1" fill="black" />
-          </a>
-        </li>
-        <li>
-          <a id="large">
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px">
-              <circle cx="8" cy="8" r="6" stroke="black" stroke-width="1" fill="black" />
-          </a>
-        </li>
-      </ul>
+      <div>
+        <button type="button" id="pencil" title="Pen tool" class="selected"><img src="/pencil.svg" height="16px"></button>
+        <button type="button" id="brush" title="Brush tool"><img src="/brush.svg" height="16px"></button>
+        <button type="button" id="eraser" title="Eraser tool"><img src="/eraser.svg" height="16px"></button>
+      </div>
+      <div>
+        <button type="button" id="small" title="Small size" data-width="2" class="selected">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px">
+            <circle cx="8" cy="8" r="3" stroke="none" fill="currentColor" />
+          </svg>
+        </button>
+        <button type="button" id="medium" title="Medium size" data-width="6">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px">
+            <circle cx="8" cy="8" r="5" stroke="none" fill="currentColor" />
+          </svg>
+        </button>
+        <button type="button" id="large" title="Large size" data-width="12">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16px" height="16px">
+            <circle cx="8" cy="8" r="7" stroke="none" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+      <div>
+        <button type="button" id="undo" title="Undo"><img src="/undo.svg" height="16px"></button>
+        <button type="button" id="redo" title="Redo"><img src="/redo.svg" height="16px"></button>
+      </div>
     </div>
-    <div id="container">
+
+    <div class="artboard">
       <canvas id="imageView" width="384" height="384">
         <p>Unfortunately, your browser is currently unsupported by our web
           application.  We are sorry for the inconvenience. Please use one of the
@@ -43,11 +42,14 @@
         <p>Supported browsers:
           <a href="http://www.opera.com">Opera</a>,
           <a href="http://www.mozilla.com">Firefox</a>,
-          <a href="http://www.apple.com/safari">Safari</a>,
+          <a href="http://www.apple.com/safari">Safari</a>artist_url,
           and <a href="http://www.konqueror.org">Konqueror</a>.
         </p>
       </canvas>
     </div>
+
+    <div id="mouseCircle"></div>
+
     <input type="hidden" id="picture_image_data" name="picture[image_data]" />
   </label>
   <input id="sendPicture" type="submit" value="Send" />
@@ -55,9 +57,9 @@
 
 <script src="/paint.js" type="text/javascript" charset="utf-8"></script>
 <script>
-$(function() {
-  $("#sendPicture").click(function() {
-    $("#picture_image_data").val($("#imageView")[0].toDataURL());
-  })
-})
+ $(function() {
+   $("#sendPicture").click(function() {
+     $("#picture_image_data").val($("#imageView")[0].toDataURL());
+   })
+ })
 </script>
